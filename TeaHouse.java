@@ -14,6 +14,7 @@ public class TeaHouse extends JFrame {
     private JButton bestellenButton;
     private JButton abbrechenButton;
     private JPanel frame;
+    private JButton filternButton;
 
     // Mảng đối tượng TeaOrder
     private TeaOrder[] teaOrders = new TeaOrder[3];
@@ -59,13 +60,13 @@ public class TeaHouse extends JFrame {
 
     // Methode zur Berechnung des Preises für eine Bestellung
     private int berechnePreis(TeaOrder bestellung) {
-        int total = TeaPrice.BASIS_PREIS.getPreis() * bestellung.Anzahl();  // Basispreis für den Tee
+        int total = TeaPrice.BASIS_PREIS.getPreis() * bestellung.getAnzahl();  // Basispreis für den Tee
 
         // Addiere den Preis für Toppings, wenn sie ausgewählt sind
-        if (bestellung.Tapioka()) {
+        if (bestellung.isTapioka()) {
             total += TeaPrice.TOPPING_PREIS.getPreis();  // Topping Tapioka
         }
-        if (bestellung.Fruechte()) {
+        if (bestellung.isFruechte()) {
             total += TeaPrice.TOPPING_PREIS.getPreis();  // Topping Früchte
         }
 

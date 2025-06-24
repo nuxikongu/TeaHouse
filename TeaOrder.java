@@ -1,4 +1,3 @@
-
 public class TeaOrder {
     private String geschmack;
     private int anzahl;
@@ -16,30 +15,36 @@ public class TeaOrder {
         this.laktosefrei = laktosefrei;
     }
 
-    public String getDetails() {
-        return "Geschmack: " + geschmack + ", Anzahl: " + anzahl +
-                ", Topping: " + (tapioka ? "Tapioka" : "") + (fruechte ? ", Früchte" : "") +
-                ", TakeAway: " + (takeAway ? "Yes" : "No") +
-                ", Laktosefrei: " + (laktosefrei ? "Yes" : "No");
+    // Getter-Methoden für alle Attribute
+    public String getGeschmack() {
+        return geschmack;
     }
 
-    public int Anzahl() {
+    public int getAnzahl() {
         return anzahl;
     }
 
-    public boolean Tapioka() {
+    public boolean isTapioka() {
         return tapioka;
     }
 
-    public boolean Fruechte() {
+    public boolean isFruechte() {
         return fruechte;
     }
 
-    public boolean TakeAway() {
+    public boolean isTakeAway() {
         return takeAway;
     }
 
-    public boolean Laktosefrei() {
+    public boolean isLaktosefrei() {
         return laktosefrei;
+    }
+
+    // Gibt die Details der Bestellung zurück
+    public String getDetails() {
+        return "Geschmack: " + geschmack + ", Anzahl: " + anzahl +
+                ", Topping: " + (tapioka ? "Tapioka" : "") + (fruechte ? ", Früchte" : "") +
+                ", TakeAway: " + (takeAway ? "Ja" : "Nein") +
+                ", Laktosefrei: " + (laktosefrei ? "Ja" : "Nein");
     }
 }
