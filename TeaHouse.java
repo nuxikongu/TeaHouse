@@ -18,11 +18,12 @@ public class TeaHouse extends JFrame {
 
     // Mảng đối tượng TeaOrder
     private TeaOrder[] teaOrders = new TeaOrder[3];
+    private int orderCount = 0;
 
     public TeaHouse() {
         setTitle("TeaHouse"); // Setzt den Titel des Fensters
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Setzt das Standard-Verhalten zum Schließen des Fensters
-        setSize(700, 400); // Setzt die Größe des Fensters
+        setSize(700, 700); // Setzt die Größe des Fensters
         setContentPane(frame); // Setzt das Panel als Inhalt des Fensters
         setVisible(true); // Macht das Fenster sichtbar
         setResizable(false); // Verhindert, dass das Fenster in der Größe verändert wird
@@ -46,6 +47,14 @@ public class TeaHouse extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetFields();  // Setzt alle Felder zurück
+            }
+        });
+
+        // ActionListener für den Button "Filtern"
+        filternButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayLaktosefreiOrders();  // Ruft die Methode auf, um die Bestellungen mit Laktosefrei anzuzeigen
             }
         });
     }
@@ -143,6 +152,22 @@ public class TeaHouse extends JFrame {
         BestSeller.setText(orders.toString());
     }
 
+    // Methode zur Anzeige von Bestellungen mit Laktosefrei
+    private void displayLaktosefreiOrders() {
+        StringBuilder orders = new StringBuilder();
+        orders.append("Laktosefreie Bestellungen:\n");
+
+        // Durchlaufe alle Bestellungen und zeige nur Laktosefreie Bestellungen an
+        for (TeaOrder order : teaOrders) {
+            if (order.isLaktosefrei()) {
+                orders.append(order.getDetails()).append("\n");
+            }
+        }
+
+        // Zeigt die gefilterten Bestellinformationen im JTextArea BestSeller an
+        BestSeller.setText(orders.toString());
+    }
+
     // Methode zum Zurücksetzen der Felder, wenn der Benutzer auf "Abbrechen" klickt
     private void resetFields() {
         Geschmack.setSelectedIndex(0);  // Setzt das ComboBox zurück
@@ -158,4 +183,3 @@ public class TeaHouse extends JFrame {
         new TeaHouse();  // Initialisiert das TeaHouse-Fenster
     }
 }
-
